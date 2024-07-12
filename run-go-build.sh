@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 FILES=$(go list ./...  | grep -v /vendor/)
-exec go build $FILES
+exec CGO_LDFLAGS="-Wl,-no_warn_duplicate_libraries" go build $FILES
